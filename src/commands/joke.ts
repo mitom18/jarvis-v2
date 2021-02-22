@@ -1,4 +1,5 @@
 import { Command, CommandContext, Embed } from "../../deps.ts";
+import { getProgrammingJoke } from "../service/jokeService.ts";
 
 export class JokeCommand extends Command {
     name = "joke";
@@ -7,10 +8,7 @@ export class JokeCommand extends Command {
         let joke =
             "// This line doesn't actually do anything, but the code stops working when I delete it.";
 
-        await fetch(
-            "https://sv443.net/jokeapi/v2/joke/Programming?format=txt&type=single"
-        )
-            .then((response) => response.text())
+        await getProgrammingJoke()
             .then((data) => {
                 joke = data;
             })

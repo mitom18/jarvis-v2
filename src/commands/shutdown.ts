@@ -6,6 +6,9 @@ export class ShutdownCommand extends Command {
     ownerOnly = true;
     async execute(ctx: CommandContext) {
         await ctx.message.reply("Logging out...");
+        ctx.client.setPresence({
+            status: "offline",
+        });
         await ctx.client.destroy();
         Deno.exit();
     }
